@@ -1,0 +1,8 @@
+node_modules
+dist
+.env
+*.log
+install_log.txt
+dev_log.txt
+.vscode
+.DS_Store
