@@ -1,5 +1,6 @@
 import { MapPin, Building2, Heart, Users } from "lucide-react";
 import { useState, useEffect } from "react";
+import { getImageUrl } from "../utils/images";
 import gif1 from "../../imports/gif1.gif";
 import gif2 from "../../imports/gif2.gif";
 import gif3 from "../../imports/gif3.gif";
@@ -138,7 +139,7 @@ export function AboutPage() {
               <ul className="space-y-2 text-gray-700">
                 <li className="flex items-start">
                   <span className="text-red-600 mr-2">•</span>
-                  Automobile accessories
+                  Dry fruits and nuts
                 </li>
                 <li className="flex items-start">
                   <span className="text-red-600 mr-2">•</span>
@@ -150,7 +151,7 @@ export function AboutPage() {
                 </li>
                 <li className="flex items-start">
                   <span className="text-red-600 mr-2">•</span>
-                  Fresh bakery and pastries
+                  Fresh cafes and bakes
                 </li>
                 <li className="flex items-start">
                   <span className="text-red-600 mr-2">•</span>
@@ -172,7 +173,7 @@ export function AboutPage() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="aspect-video rounded-xl overflow-hidden">
             <img
-              src="/masjid.jpg"
+              src={getImageUrl("/masjid.jpg")}
               alt="Jamiul Futuh Masjid"
               className="w-full h-full object-cover"
             />
@@ -193,7 +194,7 @@ export function AboutPage() {
           </div>
           <div className="aspect-video rounded-xl overflow-hidden">
             <img
-              src="/nightview.gif"
+              src={getImageUrl("/nightview.gif")}
               alt="Night View"
               className="w-full h-full object-cover"
             />
