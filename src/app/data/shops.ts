@@ -160,5 +160,17 @@ export const shops: Shop[] = [
     youtube: "https://youtube.com/@alraiqagroup",
     instagram: "https://www.instagram.com/alraiqa.in?igsh=aWloajJteWlha2Ez",
     products: []
+  },
+  {
+    id: "17",
+    name: "Nasha Gems",
+    category: "Jewelry",
+    logo: "/Nasha Gemsprofile.jpg",
+    description: "Exquisite jewelry, precious gemstones, and custom designs for every occasion.",
+    email: "muzz457u@gmail.com",
+    phone: "+91 09746666677",
+    youtube: "https://youtube.com/@nashagems?si=JlC252nS2A1j90Mv",
+    instagram: "https://www.instagram.com/nasha_gems?igsh=anFiZGY4cHh3aW5t",
+    products: []
   }
 ];

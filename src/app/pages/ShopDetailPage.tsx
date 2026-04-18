@@ -26,7 +26,9 @@ export function ShopDetailPage() {
                 ? ["/gencondigital1.jpg", "/gencondigital2.jpg", "/gencondigital3.jpg", "/gencondigital4.jpg", "/gencondigital5.jpg", "/gencondigital6.jpg"]
                 : shop?.id === "16"
                   ? ["/alraiqa1.jpg", "/alraiqa2.jpg", "/alraiqa3.jpg", "/alraiqa4.jpg", "/alraiqa5.jpg", "/alraiqa6.jpg"]
-                  : [];
+                  : shop?.id === "17"
+                    ? ["/Nasha Gems1.jpg", "/Nasha Gems2.jpg", "/Nasha Gems3.jpg", "/Nasha Gems4.jpg"]
+                    : [];
 
   useEffect(() => {
     if (shopSlides.length > 0) {
