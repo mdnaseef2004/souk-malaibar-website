@@ -21,7 +21,7 @@ export function CategoryPage() {
         {/* Header */}
         <div className="mb-8">
           <div className="flex items-center mb-4">
-            <Store className="size-8 mr-3 text-emerald-600" />
+            <Store className="size-8 mr-3 text-red-600" />
             <h1 className="text-3xl md:text-4xl text-gray-900">
               {category}
             </h1>
@@ -53,13 +53,10 @@ export function CategoryPage() {
                   <p className="text-gray-600 text-sm mb-4">
                     {shop.description}
                   </p>
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-gray-500">
-                      {shop.products.length} products
-                    </span>
+                  <div className="flex items-center justify-end">
                     <Link
                       to={`/shops/${shop.id}`}
-                      className="px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors text-sm"
+                      className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors text-sm"
                     >
                       View Shop
                     </Link>
@@ -75,7 +72,7 @@ export function CategoryPage() {
             </p>
             <Link
               to="/shops"
-              className="inline-block mt-4 text-emerald-600 hover:text-emerald-700"
+              className="inline-block mt-4 text-red-600 hover:text-red-700"
             >
               View All Shops
             </Link>

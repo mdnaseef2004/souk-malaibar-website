@@ -24,9 +24,7 @@ export function Layout() {
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
             <Link to="/" className="flex items-center space-x-2">
-              <div className="bg-gradient-to-r from-emerald-600 to-teal-600 p-2 rounded-lg">
-                <Store className="size-6 text-white" />
-              </div>
+              <img src="/logo.PNG" alt="Souk Malaibar Logo" className="h-10 w-auto" />
               <div>
                 <h1 className="font-bold text-xl text-gray-900">Souk Malaibar</h1>
                 <p className="text-xs text-gray-500">Markaz Knowledge City</p>
@@ -43,7 +41,7 @@ export function Layout() {
                     to={link.path}
                     className={`flex items-center space-x-1 px-3 py-2 rounded-md text-sm transition-colors ${
                       isActive(link.path)
-                        ? "bg-emerald-50 text-emerald-700"
+                        ? "bg-red-50 text-red-700"
                         : "text-gray-700 hover:bg-gray-100"
                     }`}
                   >
@@ -79,7 +77,7 @@ export function Layout() {
                     onClick={() => setMobileMenuOpen(false)}
                     className={`flex items-center space-x-2 px-3 py-2 rounded-md ${
                       isActive(link.path)
-                        ? "bg-emerald-50 text-emerald-700"
+                        ? "bg-red-50 text-red-700"
                         : "text-gray-700 hover:bg-gray-100"
                     }`}
                   >
@@ -130,13 +128,18 @@ export function Layout() {
             </div>
             <div>
               <h3 className="font-semibold mb-4">Location</h3>
-              <p className="text-gray-400 text-sm">
+              <a 
+                href="https://maps.app.goo.gl/q5DVN4bHnBXEREjL6?g_st=ic"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 text-sm hover:text-white transition-colors block"
+              >
                 Markaz Knowledge City
                 <br />
                 Surrounding Jamiul Futuh
                 <br />
                 Indian Grand Masjid
-              </p>
+              </a>
             </div>
           </div>
           <div className="mt-8 pt-8 border-t border-gray-800 text-center text-sm text-gray-400">

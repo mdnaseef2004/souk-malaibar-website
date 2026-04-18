@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router";
-import { Search, ExternalLink, Phone, Mail, Grid, List } from "lucide-react";
+import { Search, ExternalLink, Phone, Mail, Youtube, Instagram, Grid, List } from "lucide-react";
 import { shops, categories } from "../data/shops";
 
 export function ShopsPage() {
@@ -41,7 +41,7 @@ export function ShopsPage() {
                 placeholder="Search shops..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
               />
             </div>
 
@@ -49,7 +49,7 @@ export function ShopsPage() {
             <select
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
-              className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+              className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
             >
               {categories.map((category) => (
                 <option key={category} value={category}>
@@ -62,21 +62,19 @@ export function ShopsPage() {
             <div className="flex bg-gray-100 rounded-lg p-1">
               <button
                 onClick={() => setViewMode("grid")}
-                className={`p-2 rounded ${
-                  viewMode === "grid"
-                    ? "bg-white shadow-sm text-emerald-600"
+                className={`p-2 rounded ${viewMode === "grid"
+                    ? "bg-white shadow-sm text-red-600"
                     : "text-gray-600"
-                }`}
+                  }`}
               >
                 <Grid className="size-5" />
               </button>
               <button
                 onClick={() => setViewMode("list")}
-                className={`p-2 rounded ${
-                  viewMode === "list"
-                    ? "bg-white shadow-sm text-emerald-600"
+                className={`p-2 rounded ${viewMode === "list"
+                    ? "bg-white shadow-sm text-red-600"
                     : "text-gray-600"
-                }`}
+                  }`}
               >
                 <List className="size-5" />
               </button>
@@ -111,7 +109,7 @@ export function ShopsPage() {
                     <h3 className="text-xl text-gray-900">
                       {shop.name}
                     </h3>
-                    <span className="text-xs bg-emerald-100 text-emerald-700 px-2 py-1 rounded-full">
+                    <span className="text-xs bg-red-100 text-red-700 px-2 py-1 rounded-full">
                       {shop.category}
                     </span>
                   </div>
@@ -124,7 +122,7 @@ export function ShopsPage() {
                         href={shop.website}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center text-sm text-emerald-600 hover:text-emerald-700"
+                        className="inline-flex items-center text-sm text-red-600 hover:text-red-700"
                       >
                         <ExternalLink className="size-4 mr-1" />
                         Website
@@ -139,9 +137,9 @@ export function ShopsPage() {
                   </div>
                   <Link
                     to={`/shops/${shop.id}`}
-                    className="block w-full text-center px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors"
+                    className="block w-full text-center px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
                   >
-                    View Products
+                    View Shop
                   </Link>
                 </div>
               </div>
@@ -155,28 +153,28 @@ export function ShopsPage() {
                 className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow overflow-hidden"
               >
                 <div className="flex flex-col md:flex-row">
-                  <div className="md:w-64 aspect-video md:aspect-square overflow-hidden bg-gray-100">
+                  <div className="md:w-64 shrink-0 aspect-video md:aspect-square overflow-hidden bg-gray-100">
                     <img
                       src={shop.logo}
                       alt={shop.name}
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <div className="flex-1 p-6">
+                  <div className="flex-1 p-6 min-w-0">
                     <div className="flex items-start justify-between mb-2">
                       <div>
                         <h3 className="text-xl text-gray-900 mb-1">
                           {shop.name}
                         </h3>
-                        <span className="text-xs bg-emerald-100 text-emerald-700 px-2 py-1 rounded-full">
+                        <span className="text-xs bg-red-100 text-red-700 px-2 py-1 rounded-full">
                           {shop.category}
                         </span>
                       </div>
                       <Link
                         to={`/shops/${shop.id}`}
-                        className="px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors"
+                        className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
                       >
-                        View Products
+                        View Shop
                       </Link>
                     </div>
                     <p className="text-gray-600 mb-4">
@@ -188,22 +186,44 @@ export function ShopsPage() {
                           href={shop.website}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center text-emerald-600 hover:text-emerald-700"
+                          className="inline-flex items-center text-red-600 hover:text-red-700 truncate"
                         >
-                          <ExternalLink className="size-4 mr-1" />
-                          {shop.website}
+                          <ExternalLink className="size-4 mr-1 shrink-0" />
+                          <span className="truncate">Website</span>
+                        </a>
+                      )}
+                      {shop.youtube && (
+                        <a
+                          href={shop.youtube}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center text-red-600 hover:text-red-700"
+                        >
+                          <Youtube className="size-4 mr-1 shrink-0" />
+                          YouTube
+                        </a>
+                      )}
+                      {shop.instagram && (
+                        <a
+                          href={shop.instagram}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center text-pink-600 hover:text-pink-700"
+                        >
+                          <Instagram className="size-4 mr-1 shrink-0" />
+                          Instagram
                         </a>
                       )}
                       {shop.phone && (
                         <span className="inline-flex items-center text-gray-600">
-                          <Phone className="size-4 mr-1" />
-                          {shop.phone}
+                          <Phone className="size-4 mr-1 shrink-0" />
+                          <span className="truncate">{shop.phone}</span>
                         </span>
                       )}
                       {shop.email && (
-                        <span className="inline-flex items-center text-gray-600">
-                          <Mail className="size-4 mr-1" />
-                          {shop.email}
+                        <span className="inline-flex items-center text-gray-600 truncate max-w-xs">
+                          <Mail className="size-4 mr-1 shrink-0" />
+                          <span className="truncate">{shop.email}</span>
                         </span>
                       )}
                     </div>
