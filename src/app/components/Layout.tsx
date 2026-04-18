@@ -1,6 +1,7 @@
 import { Outlet, Link, useLocation } from "react-router";
 import { Store, ShoppingBag, Info, Menu, X } from "lucide-react";
 import { useState } from "react";
+import { getImageUrl } from "../utils/images";
 
 export function Layout() {
   const location = useLocation();
@@ -24,7 +25,7 @@ export function Layout() {
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
             <Link to="/" className="flex items-center space-x-2">
-              <img src="/logo.PNG" alt="Souk Malaibar Logo" className="h-10 w-auto" />
+              <img src={getImageUrl("/logo.PNG")} alt="Souk Malaibar Logo" className="h-10 w-auto" />
               <div>
                 <h1 className="font-bold text-xl text-gray-900">Souk Malaibar</h1>
                 <p className="text-xs text-gray-500">Markaz Knowledge City</p>

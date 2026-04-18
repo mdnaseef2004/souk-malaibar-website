@@ -2,6 +2,7 @@ import { Link } from "react-router";
 import { ArrowRight, Store, ShoppingBag, MapPin, Sparkles } from "lucide-react";
 import { categories } from "../data/shops";
 import { useState, useEffect, useRef } from "react";
+import { getImageUrl } from "../utils/images";
 
 const AnimatedCounter = ({ end, suffix = "", duration = 2000 }: { end: number, suffix?: string, duration?: number }) => {
   const [count, setCount] = useState(0);
@@ -249,7 +250,7 @@ export function HomePage() {
                   >
                     <div
                       className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-110"
-                      style={{ backgroundImage: `url('${bgImg}')` }}
+                      style={{ backgroundImage: `url('${getImageUrl(bgImg)}')` }}
                     />
                     <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors duration-500" />
                     <div className="absolute inset-0 flex items-center justify-center p-4">

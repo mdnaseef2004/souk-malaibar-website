@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router";
 import { Search, ExternalLink, Phone, Mail, Youtube, Instagram, Grid, List } from "lucide-react";
 import { shops, categories } from "../data/shops";
+import { getImageUrl } from "../utils/images";
 
 export function ShopsPage() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -99,7 +100,7 @@ export function ShopsPage() {
               >
                 <div className="aspect-video overflow-hidden bg-gray-100">
                   <img
-                    src={shop.logo}
+                    src={getImageUrl(shop.logo)}
                     alt={shop.name}
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                   />
@@ -155,7 +156,7 @@ export function ShopsPage() {
                 <div className="flex flex-col md:flex-row">
                   <div className="md:w-64 shrink-0 aspect-video md:aspect-square overflow-hidden bg-gray-100">
                     <img
-                      src={shop.logo}
+                      src={getImageUrl(shop.logo)}
                       alt={shop.name}
                       className="w-full h-full object-cover"
                     />

@@ -1,6 +1,7 @@
 import { useParams, Link } from "react-router";
 import { ArrowLeft, Store } from "lucide-react";
 import { shops } from "../data/shops";
+import { getImageUrl } from "../utils/images";
 
 export function CategoryPage() {
   const { category } = useParams();
@@ -41,7 +42,7 @@ export function CategoryPage() {
               >
                 <div className="aspect-video overflow-hidden bg-gray-100">
                   <img
-                    src={shop.logo}
+                    src={getImageUrl(shop.logo)}
                     alt={shop.name}
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                   />

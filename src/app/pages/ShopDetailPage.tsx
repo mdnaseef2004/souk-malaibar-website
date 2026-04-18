@@ -2,6 +2,7 @@ import { useParams, Link } from "react-router";
 import { ArrowLeft, ExternalLink, Phone, Mail, MapPin, ShoppingBag, Youtube, Instagram } from "lucide-react";
 import { shops } from "../data/shops";
 import { useState, useEffect } from "react";
+import { getImageUrl } from "../utils/images";
 
 export function ShopDetailPage() {
   const { id } = useParams();
@@ -72,12 +73,12 @@ export function ShopDetailPage() {
             <div className="aspect-video md:aspect-square overflow-hidden bg-gray-100 relative">
               {shopSlides.length > 0 ? (
                 shopSlides.map((slide, index) => (
-                  <div
+                   <div
                     key={index}
                     className="absolute inset-0 transition-opacity duration-1000"
                     style={{
                       opacity: currentSlideIndex === index ? 1 : 0,
-                      backgroundImage: `url('${slide}')`,
+                      backgroundImage: `url('${getImageUrl(slide)}')`,
                       backgroundSize: 'cover',
                       backgroundPosition: 'center'
                     }}
@@ -85,7 +86,7 @@ export function ShopDetailPage() {
                 ))
               ) : (
                 <img
-                  src={shop.logo}
+                  src={getImageUrl(shop.logo)}
                   alt={shop.name}
                   className="w-full h-full object-cover"
                 />
