@@ -213,7 +213,7 @@ export function ShopDetailPage() {
                 >
                   <div className="aspect-video overflow-hidden bg-gray-100 rounded-lg mb-3">
                     <img
-                      src={relatedShop.logo}
+                      src={getImageUrl(relatedShop.logo)}
                       alt={relatedShop.name}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />

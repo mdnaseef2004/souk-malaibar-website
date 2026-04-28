@@ -1,6 +1,6 @@
 import { Link } from "react-router";
-import { ArrowRight, Store, ShoppingBag, MapPin, Sparkles } from "lucide-react";
-import { categories } from "../data/shops";
+import { ArrowRight, Store, ShoppingBag, MapPin, Sparkles, ChevronRight } from "lucide-react";
+import { shops, categories } from "../data/shops";
 import { useState, useEffect, useRef } from "react";
 import { getImageUrl } from "../utils/images";
 
@@ -76,77 +76,98 @@ const RevealOnScroll = ({ children, className = "", delay = 0 }: { children: Rea
   );
 };
 
-import gif1 from "../../imports/gif1.gif";
-import gif2 from "../../imports/gif2.gif";
-import gif3 from "../../imports/gif3.gif";
-import gif4 from "../../imports/gif4.gif";
-import gif5 from "../../imports/gif5.gif";
-import gif6 from "../../imports/gif6.gif";
-import gif7 from "../../imports/gif7.gif";
-import gif8 from "../../imports/gif8.gif";
-import gif9 from "../../imports/gif9.gif";
-import gif10 from "../../imports/gif10.gif";
-import gif11 from "../../imports/gif11.gif";
+
 
 export function HomePage() {
   const displayCategories = categories.filter(c => c !== "All");
-  const backgroundGifs = [gif1, gif2, gif3, gif4, gif5, gif6, gif7, gif8, gif9, gif10, gif11];
-  const [currentGifIndex, setCurrentGifIndex] = useState(0);
+  const heroImages = shops.map(shop => shop.logo).filter(logo => logo);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentGifIndex((prevIndex) => (prevIndex + 1) % backgroundGifs.length);
-    }, 3000); // Change GIF every 3 seconds
-
-    return () => clearInterval(interval);
-  }, [backgroundGifs.length]);
+    if (heroImages.length > 0) {
+      const interval = setInterval(() => {
+        setCurrentImageIndex((prevIndex) => (prevIndex + 1) % heroImages.length);
+      }, 4000); // Change image every 4 seconds
+      return () => clearInterval(interval);
+    }
+  }, [heroImages.length]);
 
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section
-        className="relative bg-gradient-to-br from-red-700 via-rose-600 to-red-800 text-white pt-12 pb-32 md:pt-20 md:pb-48 min-h-[400px] flex items-center overflow-hidden"
-      >
-        {/* Animated GIF Background */}
-        <div className="absolute inset-0 z-0">
-          {backgroundGifs.map((gif, index) => (
-            <div
-              key={index}
-              className="absolute inset-0 transition-opacity duration-1000"
-              style={{
-                opacity: currentGifIndex === index ? 1 : 0,
-                backgroundImage: `url('${gif}')`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center bottom'
-              }}
-            />
-          ))}
-          {/* Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/60 to-black/70" />
-        </div>
+      <section className="relative bg-white pt-6 pb-12 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="relative h-[400px] md:h-[500px] rounded-3xl overflow-hidden flex flex-col md:flex-row shadow-2xl shadow-red-900/10">
+            {/* Left Side: Images */}
+            <div className="relative flex-1 bg-[#F9F7F5] p-8 md:p-12 flex items-center justify-center overflow-hidden">
+               {/* Background Decorative Element */}
+               <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+                 <div className="absolute -top-24 -left-24 w-96 h-96 bg-red-200 rounded-full blur-3xl"></div>
+                 <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-orange-200 rounded-full blur-3xl"></div>
+               </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center mt-16 md:mt-24">
-            <h1 className="text-4xl md:text-6xl mb-6">
-              Souk Malaibar
-            </h1>
-            <p className="text-xl md:text-2xl mb-8 text-red-50">
-              A Complete Shopping Experience at the Heart of Markaz Knowledge City
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                to="/shops"
-                className="inline-flex items-center justify-center px-8 py-3 bg-white text-red-700 rounded-lg hover:bg-red-50 transition-colors"
+               {/* Shop Images Stack/Grid */}
+               <div className="relative z-10 flex items-center justify-center gap-4 animate-in fade-in zoom-in duration-700">
+                 {heroImages.slice(currentImageIndex, currentImageIndex + 4).map((image, idx) => (
+                   <div 
+                     key={idx} 
+                     className={`w-32 h-44 md:w-40 md:h-56 bg-white rounded-lg shadow-lg overflow-hidden border border-gray-100 transition-all duration-500 transform ${
+                       idx % 2 === 0 ? "translate-y-4" : "-translate-y-4"
+                     } hover:scale-105 hover:z-20`}
+                   >
+                     <img 
+                       src={getImageUrl(image)} 
+                       alt="Shop" 
+                       className="w-full h-full object-cover"
+                     />
+                   </div>
+                 ))}
+               </div>
+            </div>
+
+            {/* Right Side: Content Block */}
+            <div className="md:w-[45%] bg-[#F37021] p-8 md:p-16 flex flex-col justify-center text-white relative">
+              <div className="relative z-10">
+                <div className="w-16 h-1 bg-white mb-8 rounded-full"></div>
+                <h1 className="text-4xl md:text-6xl font-serif font-bold mb-6 leading-tight">
+                  Premium <br />
+                  <span className="opacity-90">Experience</span> <br />
+                  <span className="text-3xl md:text-4xl font-sans font-light italic">at Markaz Knowledge City</span>
+                </h1>
+                <p className="text-lg md:text-xl text-white/80 mb-10 max-w-md font-light leading-relaxed">
+                  Discover a complete shopping experience at the heart of tradition and modern excellence.
+                </p>
+                <Link
+                  to="/shops"
+                  className="inline-flex items-center px-8 py-4 bg-white text-[#F37021] font-bold rounded-xl hover:bg-gray-50 transition-all transform hover:-translate-y-1 shadow-xl shadow-black/10 group"
+                >
+                  Browse Store
+                  <ChevronRight className="ml-2 size-5 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </div>
+
+              {/* Slider Controls */}
+              <div className="absolute bottom-10 left-8 md:left-16 flex items-center space-x-6 z-10">
+                <div className="flex space-x-2">
+                  {heroImages.slice(0, 3).map((_, idx) => (
+                    <button 
+                      key={idx}
+                      onClick={() => setCurrentImageIndex(idx)}
+                      className={`h-2 rounded-full transition-all duration-300 ${
+                        currentImageIndex % 3 === idx ? "w-8 bg-white" : "w-2 bg-white/40"
+                      }`}
+                    />
+                  ))}
+                </div>
+              </div>
+
+              {/* Next Button */}
+              <button 
+                onClick={() => setCurrentImageIndex((prev) => (prev + 1) % heroImages.length)}
+                className="absolute right-6 md:right-10 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center transition-all border border-white/20 group z-10"
               >
-                Explore Shops
-                <ArrowRight className="ml-2 size-5" />
-              </Link>
-              <Link
-                to="/about"
-                className="inline-flex items-center justify-center px-8 py-3 bg-red-600/30 backdrop-blur-sm text-white border border-white/30 rounded-lg hover:bg-red-600/40 transition-colors"
-              >
-                Learn More
-              </Link>
+                <ChevronRight className="size-6 text-white group-hover:translate-x-0.5 transition-transform" />
+              </button>
             </div>
           </div>
         </div>
