@@ -99,26 +99,36 @@ export function HomePage() {
         <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
           <div className="relative h-[280px] sm:h-[400px] md:h-[500px] rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden flex flex-row shadow-2xl shadow-red-900/10 border border-gray-100">
             {/* Left Side: Images (50% on mobile, flex-1 on desktop) */}
-            <div className="relative w-1/2 md:flex-1 bg-[#F9F7F5] z-0 flex items-center justify-center p-4 md:p-12 overflow-hidden">
+            <div className="relative w-1/2 md:flex-1 bg-[#F9F7F5] z-0 flex items-center justify-center md:p-12 overflow-hidden">
                {/* Background Decorative Element */}
                <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
                  <div className="absolute -top-12 -left-12 w-48 h-48 md:w-96 md:h-96 bg-red-200 rounded-full blur-2xl"></div>
                  <div className="absolute -bottom-12 -right-12 w-48 h-48 md:w-96 md:h-96 bg-orange-200 rounded-full blur-3xl"></div>
                </div>
                
-               {/* Images */}
-               <div className="relative z-10 flex items-center justify-center gap-2 md:gap-4 animate-in fade-in zoom-in duration-700">
+               {/* Mobile: Full-frame Image */}
+               <div className="md:hidden absolute inset-0">
+                 <img 
+                   src={getImageUrl(heroImages[currentImageIndex])} 
+                   alt="Shop" 
+                   className="w-full h-full object-cover"
+                 />
+                 <div className="absolute inset-0 bg-gradient-to-r from-black/5 to-transparent" />
+               </div>
+
+               {/* Desktop: Floating Cards Showcase */}
+               <div className="hidden md:flex relative z-10 items-center justify-center gap-4 animate-in fade-in zoom-in duration-700">
                  {heroImages.slice(currentImageIndex, currentImageIndex + 4).map((image, idx) => (
                    <div 
                      key={idx} 
-                     className={`relative w-16 h-24 sm:w-24 sm:h-36 md:w-40 md:h-56 bg-white rounded-lg md:rounded-2xl shadow-xl overflow-hidden border border-gray-100/50 transition-all duration-700 transform ${
-                       idx % 2 === 0 ? "translate-y-2 md:translate-y-8" : "-translate-y-2 md:-translate-y-8"
-                     } ${idx > 0 && "hidden xs:block"} ${idx > 1 && "hidden sm:block"}`}
+                     className={`relative w-40 h-56 bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100/50 transition-all duration-700 transform ${
+                       idx % 2 === 0 ? "translate-y-8" : "-translate-y-8"
+                     } ${idx > 1 && "hidden lg:block"}`}
                    >
                      <img 
                        src={getImageUrl(image)} 
                        alt="Shop" 
-                       className="w-full h-full object-contain md:object-cover p-1 md:p-0"
+                       className="w-full h-full object-cover"
                      />
                    </div>
                  ))}
