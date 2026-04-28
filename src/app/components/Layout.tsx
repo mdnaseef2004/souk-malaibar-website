@@ -89,8 +89,8 @@ export function Layout() {
               {/* Main Nav Links */}
               <nav className="flex items-center space-x-6">
                 <Link to="/" className={`text-sm font-medium transition-colors ${isActive("/") ? "text-red-700" : "text-gray-600 hover:text-red-600"}`}>Home</Link>
+                <Link to="/shops" className={`text-sm font-medium transition-colors ${isActive("/shops") ? "text-red-700" : "text-gray-600 hover:text-red-600"}`}>Stores</Link>
                 <Link to="/about" className={`text-sm font-medium transition-colors ${isActive("/about") ? "text-red-700" : "text-gray-600 hover:text-red-600"}`}>About Us</Link>
-                <Link to="/shops" className={`text-sm font-medium transition-colors ${isActive("/shops") ? "text-red-700" : "text-gray-600 hover:text-red-600"}`}>Our Stores</Link>
               </nav>
             </div>
           </div>
@@ -109,7 +109,7 @@ export function Layout() {
             </div>
             <nav className="flex flex-col space-y-3">
               <Link to="/" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium py-2 border-b border-gray-50">Home</Link>
-              <Link to="/shops" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium py-2 border-b border-gray-50">Browse Shops</Link>
+              <Link to="/shops" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium py-2 border-b border-gray-50">Stores</Link>
               <Link to="/about" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium py-2 border-b border-gray-50">About Us</Link>
               <div className="pt-2 flex flex-col space-y-2">
                 <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Categories</p>
