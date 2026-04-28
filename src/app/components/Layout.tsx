@@ -30,11 +30,11 @@ export function Layout() {
               <div className="relative">
                 <img src={getImageUrl("/logo.PNG")} alt="Souk Malaibar Logo" className="h-12 w-auto" />
               </div>
-              <div className="hidden sm:block">
-                <h1 className="font-serif font-bold text-2xl text-gray-900 leading-tight">
+              <div className="block">
+                <h1 className="font-serif font-bold text-lg sm:text-2xl text-gray-900 leading-tight">
                   Souk <span className="text-red-700">Malaibar</span>
                 </h1>
-                <p className="text-[10px] tracking-[0.2em] uppercase text-gray-500 font-medium">Markaz Knowledge City</p>
+                <p className="text-[8px] sm:text-[10px] tracking-[0.1em] sm:tracking-[0.2em] uppercase text-gray-500 font-medium">Markaz Knowledge City</p>
               </div>
             </Link>
 
