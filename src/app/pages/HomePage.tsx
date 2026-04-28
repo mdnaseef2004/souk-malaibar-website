@@ -118,7 +118,7 @@ export function HomePage() {
                      <img 
                        src={getImageUrl(image)} 
                        alt="Shop" 
-                       className="w-full h-full object-cover"
+                       className="w-full h-full object-contain md:object-cover p-1 md:p-0"
                      />
                    </div>
                  ))}
