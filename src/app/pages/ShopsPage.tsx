@@ -27,7 +27,7 @@ export function ShopsPage() {
             All Shops
           </h1>
           <p className="text-gray-600">
-            Explore our collection of 140+ shops across various categories
+            Explore our collection of 150+ shops across various categories
           </p>
         </div>
 
