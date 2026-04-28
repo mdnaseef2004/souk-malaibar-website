@@ -95,76 +95,83 @@ export function HomePage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative bg-white pt-6 pb-12 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative h-[400px] md:h-[500px] rounded-3xl overflow-hidden flex flex-col md:flex-row shadow-2xl shadow-red-900/10">
-            {/* Left Side: Images */}
-            <div className="relative flex-1 bg-[#F9F7F5] p-8 md:p-12 flex items-center justify-center overflow-hidden">
-               {/* Background Decorative Element */}
-               <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+      <section className="relative bg-white pt-4 pb-12 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+          <div className="relative h-[600px] md:h-[500px] rounded-[2.5rem] overflow-hidden flex flex-col md:flex-row shadow-2xl shadow-red-900/10 border border-gray-100">
+            {/* Background Layer (Always visible, shared between mobile/desktop) */}
+            <div className="absolute inset-0 bg-[#F9F7F5] z-0">
+               <div className="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none">
                  <div className="absolute -top-24 -left-24 w-96 h-96 bg-red-200 rounded-full blur-3xl"></div>
                  <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-orange-200 rounded-full blur-3xl"></div>
                </div>
-
-               {/* Shop Images Stack/Grid */}
-               <div className="relative z-10 flex items-center justify-center gap-4 animate-in fade-in zoom-in duration-700">
+               
+               {/* Image Showcase (Desktop: Left, Mobile: Full Background with fade) */}
+               <div className="absolute inset-0 md:right-[45%] flex items-center justify-center gap-4 px-8 overflow-hidden">
                  {heroImages.slice(currentImageIndex, currentImageIndex + 4).map((image, idx) => (
                    <div 
                      key={idx} 
-                     className={`w-32 h-44 md:w-40 md:h-56 bg-white rounded-lg shadow-lg overflow-hidden border border-gray-100 transition-all duration-500 transform ${
-                       idx % 2 === 0 ? "translate-y-4" : "-translate-y-4"
-                     } hover:scale-105 hover:z-20`}
+                     className={`relative w-32 h-44 md:w-40 md:h-56 bg-white rounded-2xl shadow-2xl overflow-hidden border border-gray-100/50 transition-all duration-700 transform ${
+                       idx % 2 === 0 ? "translate-y-8" : "-translate-y-8"
+                     } ${idx > 1 ? "hidden sm:block" : "block"}`}
                    >
                      <img 
                        src={getImageUrl(image)} 
                        alt="Shop" 
                        className="w-full h-full object-cover"
                      />
+                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
                    </div>
                  ))}
                </div>
             </div>
 
-            {/* Right Side: Content Block */}
-            <div className="md:w-[45%] bg-[#F37021] p-8 md:p-16 flex flex-col justify-center text-white relative">
-              <div className="relative z-10">
-                <div className="w-16 h-1 bg-white mb-8 rounded-full"></div>
-                <h1 className="text-4xl md:text-6xl font-serif font-bold mb-6 leading-tight">
+            {/* Content Block (Mobile: Floating Card, Desktop: Solid Sidebar) */}
+            <div className="relative z-10 w-full h-full md:w-[45%] md:ml-auto flex flex-col justify-end md:justify-center p-6 md:p-16">
+              {/* Desktop Sidebar Background */}
+              <div className="absolute inset-0 bg-[#F37021] hidden md:block" />
+              
+              {/* Mobile Content Card (Glassmorphism) */}
+              <div className="relative z-20 bg-[#F37021] md:bg-transparent p-8 md:p-0 rounded-[2rem] md:rounded-none shadow-2xl md:shadow-none border border-white/10 md:border-none backdrop-blur-sm md:backdrop-blur-none animate-in slide-in-from-bottom duration-700">
+                <div className="w-12 md:w-16 h-1 bg-white mb-6 md:mb-8 rounded-full opacity-50"></div>
+                <h1 className="text-3xl md:text-6xl font-serif font-bold mb-4 md:mb-6 leading-tight text-white">
                   Premium <br />
                   <span className="opacity-90">Experience</span> <br />
-                  <span className="text-3xl md:text-4xl font-sans font-light italic">at Markaz Knowledge City</span>
+                  <span className="text-2xl md:text-4xl font-sans font-light italic">at Markaz Knowledge City</span>
                 </h1>
-                <p className="text-lg md:text-xl text-white/80 mb-10 max-w-md font-light leading-relaxed">
+                <p className="text-sm md:text-xl text-white/80 mb-8 md:mb-10 max-w-md font-light leading-relaxed">
                   Discover a complete shopping experience at the heart of tradition and modern excellence.
                 </p>
-                <Link
-                  to="/shops"
-                  className="inline-flex items-center px-8 py-4 bg-white text-[#F37021] font-bold rounded-xl hover:bg-gray-50 transition-all transform hover:-translate-y-1 shadow-xl shadow-black/10 group"
-                >
-                  Browse Store
-                  <ChevronRight className="ml-2 size-5 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </div>
+                
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Link
+                    to="/shops"
+                    className="inline-flex items-center justify-center px-8 py-4 bg-white text-[#F37021] font-bold rounded-xl hover:bg-gray-50 transition-all transform hover:-translate-y-1 shadow-lg shadow-black/10 group text-sm md:text-base"
+                  >
+                    Browse Store
+                    <ChevronRight className="ml-2 size-5 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </div>
 
-              {/* Slider Controls */}
-              <div className="absolute bottom-10 left-8 md:left-16 flex items-center space-x-6 z-10">
-                <div className="flex space-x-2">
-                  {heroImages.slice(0, 3).map((_, idx) => (
-                    <button 
-                      key={idx}
-                      onClick={() => setCurrentImageIndex(idx)}
-                      className={`h-2 rounded-full transition-all duration-300 ${
-                        currentImageIndex % 3 === idx ? "w-8 bg-white" : "w-2 bg-white/40"
-                      }`}
-                    />
-                  ))}
+                {/* Slider Controls (Mobile Integrated) */}
+                <div className="mt-8 flex items-center space-x-4">
+                  <div className="flex space-x-2">
+                    {[0, 1, 2].map((idx) => (
+                      <button 
+                        key={idx}
+                        onClick={() => setCurrentImageIndex(idx)}
+                        className={`h-1.5 rounded-full transition-all duration-300 ${
+                          currentImageIndex % 3 === idx ? "w-8 bg-white" : "w-2 bg-white/30"
+                        }`}
+                      />
+                    ))}
+                  </div>
                 </div>
               </div>
 
-              {/* Next Button */}
+              {/* Navigation Arrows (Desktop Only) */}
               <button 
                 onClick={() => setCurrentImageIndex((prev) => (prev + 1) % heroImages.length)}
-                className="absolute right-6 md:right-10 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center transition-all border border-white/20 group z-10"
+                className="absolute right-8 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full hidden md:flex items-center justify-center transition-all border border-white/20 group z-30"
               >
                 <ChevronRight className="size-6 text-white group-hover:translate-x-0.5 transition-transform" />
               </button>
